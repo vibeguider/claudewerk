@@ -6,8 +6,8 @@ use_bpm 60
 use_real_time
 
 # Load dependencies
-run_file "/Users/booth/Downloads/nerdery/b2bclaude/tuning.rb"
-run_file "/Users/booth/Downloads/nerdery/b2bclaude/counterpoint_engine.rb"
+run_file "/Users/sma/claudewerk/conductor/tuning.rb"
+run_file "/Users/sma/claudewerk/rules/counterpoint_engine.rb"
 
 # Network setup
 use_osc COMPUTER_B_IP, OSC_PORT
