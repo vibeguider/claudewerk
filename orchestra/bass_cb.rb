@@ -6,8 +6,8 @@ use_bpm 60
 use_real_time
 
 # Load dependencies
-run_file File.expand_path("~/claudewerk/conductor/tuning.rb")
-run_file File.expand_path("~/claudewerk/rules/counterpoint_engine.rb")
+run_file File.expand_path("../conductor/tuning.rb", __dir__)
+run_file File.expand_path("../rules/counterpoint_engine.rb", __dir__)
 
 # Network setup
 use_osc COMPUTER_A_IP, OSC_PORT
