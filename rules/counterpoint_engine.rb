@@ -5,7 +5,8 @@
 # Returns notes based on rules, context, and voice range
 
 # Load base counterpoint rules
-run_file "./counterpoint_rules.rb"
+repo = ENV['CLAUDEWERK'] || File.expand_path("~/claudewerk")
+run_file "#{repo}/rules/counterpoint_rules.rb"
 
 # ==============================================
 # NOTE SELECTION FUNCTIONS

@@ -5,9 +5,11 @@
 use_bpm 60
 use_real_time
 
-# Load dependencies (relative to repo root)
-run_file "../conductor/tuning.rb"
-run_file "../rules/counterpoint_engine.rb"
+# Load dependencies
+# Set CLAUDEWERK env var to your repo path, or it defaults to ~/claudewerk
+repo = ENV['CLAUDEWERK'] || File.expand_path("~/claudewerk")
+run_file "#{repo}/conductor/tuning.rb"
+run_file "#{repo}/rules/counterpoint_engine.rb"
 
 # Network setup
 use_osc COMPUTER_A_IP, OSC_PORT
