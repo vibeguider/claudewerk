@@ -183,9 +183,12 @@ define :first_species_move do |cantus_prev, cantus_curr, counter_prev, voice_typ
     stepwise_notes.choose
   elsif good_notes.length > 0
     good_notes.choose
-  else
+  elsif candidates.length > 0
     # Fallback: any consonance
     candidates.choose
+  else
+    # Ultimate fallback: stay on current note
+    counter_prev
   end
 end
 

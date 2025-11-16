@@ -75,9 +75,14 @@ define :choose_middle_phrase_note do |their_note, their_prev, my_prev, voice_typ
   # Absolute fallback: any consonance
   if note.nil?
     candidates = valid_counterpoint_notes(their_note, voice_type)
-    note = candidates.choose
+    if candidates.length > 0
+      note = candidates.choose
+    else
+      # Ultimate fallback: stay on current note or use their note
+      note = my_prev || their_note
+    end
   end
-  
+
   note
 end
 
