@@ -62,7 +62,7 @@ live_loop :play do
       get[:phrase_length],
       get[:my_voice]
     )
-    
+
     # Analyze the move
     analysis = analyze_move(
       get[:their_previous_note],
@@ -70,21 +70,21 @@ live_loop :play do
       get[:my_previous_note],
       note
     )
-    
+
     # Log
     log_move(note, analysis, get[:phrase_position])
-    
+
     # Play with our instrument settings
     use_synth get[:my_synth]
     play note, amp: get[:my_amp], release: get[:my_release]
-    
+
     # Update state
     set :my_previous_note, note
     set :phrase_position, get[:phrase_position] + 1
-    
+
     # Broadcast
     osc "/note", note, get[:my_name]
-    
+
     # Check if phrase complete
     if get[:phrase_position] >= get[:phrase_length]
       puts "--- Phrase complete ---"
@@ -93,10 +93,19 @@ live_loop :play do
       set :their_previous_note, nil
       sleep 2
     end
-    
+
     set :my_turn, false
+    set :wait_count, 0
     sleep 1
   else
+    # If we've waited too long, take another turn (keep playing even without response)
+    wait_count = get[:wait_count] || 0
+    if wait_count >= 8  # After 2 seconds of waiting
+      set :my_turn, true
+      set :wait_count, 0
+    else
+      set :wait_count, wait_count + 1
+    end
     sleep 0.25
   end
 end
