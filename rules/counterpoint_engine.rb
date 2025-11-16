@@ -4,8 +4,8 @@
 # No instrument-specific code - just counterpoint logic
 # Returns notes based on rules, context, and voice range
 
-# Load base counterpoint rules (REPO_PATH set by caller)
-run_file File.expand_path("#{REPO_PATH}/rules/counterpoint_rules.rb")
+# Load base counterpoint rules
+run_file "./counterpoint_rules.rb"
 
 # ==============================================
 # NOTE SELECTION FUNCTIONS
