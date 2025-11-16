@@ -5,9 +5,12 @@
 use_bpm 60
 use_real_time
 
+# SET THIS TO YOUR REPO LOCATION
+REPO_PATH = "~/claudewerk"
+
 # Load dependencies
-run_file File.expand_path("../conductor/tuning.rb", __dir__)
-run_file File.expand_path("../rules/counterpoint_engine.rb", __dir__)
+run_file File.expand_path("#{REPO_PATH}/conductor/tuning.rb")
+run_file File.expand_path("#{REPO_PATH}/rules/counterpoint_engine.rb")
 
 # Network setup
 use_osc COMPUTER_A_IP, OSC_PORT
