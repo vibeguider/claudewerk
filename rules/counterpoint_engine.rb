@@ -5,7 +5,7 @@
 # Returns notes based on rules, context, and voice range
 
 # Load base counterpoint rules
-run_file "~/claudewerk/rules/counterpoint_rules.rb"
+run_file __dir__ + "/counterpoint_rules.rb"
 
 # ==============================================
 # NOTE SELECTION FUNCTIONS

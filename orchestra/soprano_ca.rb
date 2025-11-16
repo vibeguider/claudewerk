@@ -5,9 +5,9 @@
 use_bpm 60
 use_real_time
 
-# Load dependencies - use ~ for home directory
-run_file "~/claudewerk/conductor/tuning.rb"
-run_file "~/claudewerk/rules/counterpoint_engine.rb"
+# Load dependencies - relative to this file's location
+run_file __dir__ + "/../conductor/tuning.rb"
+run_file __dir__ + "/../rules/counterpoint_engine.rb"
 
 # Network setup
 use_osc COMPUTER_B_IP, OSC_PORT
