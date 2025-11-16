@@ -167,6 +167,9 @@ end
 # Rule 11: First Species Counterpoint Move
 # Choose next note avoiding all parallel/hidden issues
 define :first_species_move do |cantus_prev, cantus_curr, counter_prev, voice_type = :soprano|
+  # Return nil if any input is nil
+  return nil if cantus_prev.nil? || cantus_curr.nil? || counter_prev.nil?
+
   candidates = valid_counterpoint_notes(cantus_curr, voice_type)
 
   # Filter out forbidden moves
@@ -195,6 +198,9 @@ end
 # Rule 12: Contrary Motion Preference
 # When possible, move in contrary motion to cantus
 define :contrary_motion_note do |cantus_prev, cantus_curr, counter_prev, voice_type = :soprano|
+  # Return nil if any input is nil
+  return nil if cantus_prev.nil? || cantus_curr.nil? || counter_prev.nil?
+
   cantus_direction = cantus_curr - cantus_prev
   candidates = valid_counterpoint_notes(cantus_curr, voice_type)
 
