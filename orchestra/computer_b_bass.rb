@@ -3,12 +3,15 @@
 use_bpm 90
 use_real_time
 
-# Network config - UPDATE THESE FOR YOUR SETUP
-set :their_ip, "192.168.1.100"  # Computer A's IP address
+# Network config - auto-loaded from pairing script
+# Run ./auto_pair.sh first on both Macs!
+config = JSON.parse(File.read("/tmp/sonic_pi_network.json"))
+set :their_ip, config["partner_ip"]
 set :their_port, 4560
 set :my_name, "Bass"
 
 use_osc get[:their_ip], get[:their_port]
+puts "Partner IP: #{get[:their_ip]}"
 
 # Musical state
 set :last_heard_note, nil
